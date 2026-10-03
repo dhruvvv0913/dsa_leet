@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+/*
+ * imaginati design tokens.
+ * Brand colours are measured from the logo. The site has a light theme (like
+ * the logo on white) and a deep-navy dark theme (the default); components only ever use the
+ * semantic tokens below, so both themes stay in sync.
+ */
+@theme {
+  --color-brand-teal: #6fcdd5;
+  --color-brand-sky: #72c2f3;
+  --color-brand-blue: #2d66cf;
+  --color-brand-steel: #3373bb;
+  --color-brand-indigo: #4259f5;
+  --color-brand-violet: #7350de;
+  --color-brand-ink: #060f1b;
+
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+
+  --animate-fade-in: fade-in 160ms ease-out;
+  --animate-pop: pop 180ms ease-out;
+  --animate-slide-in: slide-in 200ms ease-out;
+  --animate-shimmer: shimmer 1.4s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(4px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateX(16px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+}
+
+/* Semantic tokens: values come from the active [data-theme] below. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-strong: var(--strong);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-easy: var(--easy);
+  --color-medium: var(--medium);
+  --color-hard: var(--hard);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --shadow-pop: 0 16px 40px -12px var(--shadow-color), 0 2px 8px -2px var(--shadow-color);
+  --shadow-card: 0 1px 2px 0 var(--shadow-soft);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --surface: #111a2c;
+  --surface-2: #172238;
+  --surface-3: #1f2c46;
+  --border: #1f2a40;
+  --border-strong: #2c3a57;
+  --text: rgb(226 232 244 / 0.92);
+  --strong: #ffffff;
+  --muted: #94a0b8;
+  --faint: #63708a;
+  --accent: #5b8cf0;
+  --accent-hover: #7aa3f5;
+  --accent-ink: #0b1120;
+  --easy: #00b8a3;
+  --medium: #ffc01e;
+  --hard: #ff375f;
+  --success: #2cbb5d;
+  --danger: #ef4743;
+  --info: #a58ce6;
+
+  --zebra: rgb(255 255 255 / 0.022);
+  --shadow-color: rgb(0 0 0 / 0.5);
+  --shadow-soft: rgb(0 0 0 / 0.2);
+  --backdrop: rgb(2 6 15 / 0.65);
+  --selection: rgb(91 140 240 / 0.3);
+
+  --gbtn-bg: #131314;
+  --gbtn-hover: #1f1f20;
+  --gbtn-border: #8e918f;
+  --gbtn-text: #e3e3e3;
+
+  --avatar-ink: #ffffff;
+  --avatar-0: #1f3a5f;
+  --avatar-1: #1b4447;
+  --avatar-2: #34295c;
+  --avatar-3: #262f6b;
+  --avatar-4: #233a5c;
+  --avatar-5: #2a3450;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #f1f4f9;
+  --surface-3: #e5eaf2;
+  --border: #e2e7ef;
+  --border-strong: #cbd4e1;
+  --text: #1d2738;
+  --strong: #060f1b;
+  --muted: #5a667d;
+  --faint: #8b95a8;
+  --accent: #2d66cf;
+  --accent-hover: #2556b4;
+  --accent-ink: #ffffff;
+  /* LeetCode's difficulty hues, deepened to stay readable on white */
+  --easy: #0b8a7a;
+  --medium: #b26b00;
+  --hard: #dc2a52;
+  --success: #18a058;
+  --danger: #d92d3a;
+  --info: #7350de;
+
+  --zebra: rgb(15 23 42 / 0.018);
+  --shadow-color: rgb(15 23 42 / 0.14);
+  --shadow-soft: rgb(15 23 42 / 0.04);
+  --backdrop: rgb(6 15 27 / 0.35);
+  --selection: rgb(45 102 207 / 0.18);
+
+  --gbtn-bg: #ffffff;
+  --gbtn-hover: #f6f8fb;
+  --gbtn-border: #747775;
+  --gbtn-text: #1f1f1f;
+
+  --avatar-ink: #1d2738;
+  --avatar-0: #d9eefc;
+  --avatar-1: #d6f2f4;
+  --avatar-2: #e6e0fa;
+  --avatar-3: #dde3fd;
+  --avatar-4: #dfe9f6;
+  --avatar-5: #eaeefb;
+}
+
+:root {
+  --brand-gradient: linear-gradient(90deg, #6fcdd5 0%, #2d66cf 55%, #7350de 100%);
+  --brand-gradient-v: linear-gradient(180deg, #6fcdd5 0%, #2d66cf 55%, #7350de 100%);
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--selection);
+    color: var(--strong);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+
+  dialog {
+    color: inherit;
+  }
+
+  dialog::backdrop {
+    background: var(--backdrop);
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Zebra rows inside table-like lists */
+  .zebra > :nth-child(even) {
+    background: var(--zebra);
+  }
+
+  .bg-brand-gradient {
+    background-image: var(--brand-gradient);
+  }
+
+  .bg-brand-gradient-v {
+    background-image: var(--brand-gradient-v);
+  }
+}
